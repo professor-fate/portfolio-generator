@@ -39,9 +39,22 @@ const promptUser = () => {
         }
     },
     {
-        type:'input',
+        type:'confirm',
+        name:'confirmAbout',
+        message:'Do you think anyone would be intersted in any of the inane details about your life in an "about" section?',
+        default: true
+    },
+    {  
+        type: 'input',
         name:'about',
-        message:'Provide some information about yourself:'
+        message: 'Provide some information about yourself:',
+        when: ({confirmAbout}) => {
+            if (confirmAbout) {
+                return true;
+            } else {
+            return false;
+            }
+        }
     }
 ]);
 };
